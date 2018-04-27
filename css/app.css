@@ -1,0 +1,399 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #ffffff url('../img/geometry2.png');
+  /* Background pattern from Subtle Patterns */
+  font-family: 'Coda', cursive;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+
+/*
+ * Animation keyframes from: http://animista.net/
+ */
+
+ @keyframes flip-vertical-right {
+   0% {
+     -webkit-transform: rotateY(0);
+             transform: rotateY(0);
+   }
+   100% {
+     -webkit-transform: rotateY(180deg);
+             transform: rotateY(180deg);
+   }
+ }
+
+ @-webkit-keyframes flip-vertical-right {
+   0% {
+     -webkit-transform: rotateY(0);
+             transform: rotateY(0);
+   }
+   100% {
+     -webkit-transform: rotateY(180deg);
+             transform: rotateY(180deg);
+   }
+ }
+
+ @keyframes shake-horizontal {
+   0%,
+   100% {
+     -webkit-transform: translateX(0);
+             transform: translateX(0);
+   }
+   10%,
+   30%,
+   50%,
+   70% {
+     -webkit-transform: translateX(-10px);
+             transform: translateX(-10px);
+   }
+   20%,
+   40%,
+   60% {
+     -webkit-transform: translateX(10px);
+             transform: translateX(10px);
+   }
+   80% {
+     -webkit-transform: translateX(8px);
+             transform: translateX(8px);
+   }
+   90% {
+     -webkit-transform: translateX(-8px);
+             transform: translateX(-8px);
+   }
+ }
+
+ @-webkit-keyframes shake-horizontal {
+   0%,
+   100% {
+     -webkit-transform: translateX(0);
+             transform: translateX(0);
+   }
+   10%,
+   30%,
+   50%,
+   70% {
+     -webkit-transform: translateX(-10px);
+             transform: translateX(-10px);
+   }
+   20%,
+   40%,
+   60% {
+     -webkit-transform: translateX(10px);
+             transform: translateX(10px);
+   }
+   80% {
+     -webkit-transform: translateX(8px);
+             transform: translateX(8px);
+   }
+   90% {
+     -webkit-transform: translateX(-8px);
+             transform: translateX(-8px);
+   }
+ }
+
+ @keyframes jello-horizontal {
+   0% {
+     -webkit-transform: scale3d(1, 1, 1);
+             transform: scale3d(1, 1, 1);
+   }
+   30% {
+     -webkit-transform: scale3d(1.25, 0.75, 1);
+             transform: scale3d(1.25, 0.75, 1);
+   }
+   40% {
+     -webkit-transform: scale3d(0.75, 1.25, 1);
+             transform: scale3d(0.75, 1.25, 1);
+   }
+   50% {
+     -webkit-transform: scale3d(1.15, 0.85, 1);
+             transform: scale3d(1.15, 0.85, 1);
+   }
+   65% {
+     -webkit-transform: scale3d(0.95, 1.05, 1);
+             transform: scale3d(0.95, 1.05, 1);
+   }
+   75% {
+     -webkit-transform: scale3d(1.05, 0.95, 1);
+             transform: scale3d(1.05, 0.95, 1);
+   }
+   100% {
+     -webkit-transform: scale3d(1, 1, 1);
+             transform: scale3d(1, 1, 1);
+   }
+ }
+
+ @-webkit-keyframes jello-horizontal {
+   0% {
+     -webkit-transform: scale3d(1, 1, 1);
+             transform: scale3d(1, 1, 1);
+   }
+   30% {
+     -webkit-transform: scale3d(1.25, 0.75, 1);
+             transform: scale3d(1.25, 0.75, 1);
+   }
+   40% {
+     -webkit-transform: scale3d(0.75, 1.25, 1);
+             transform: scale3d(0.75, 1.25, 1);
+   }
+   50% {
+     -webkit-transform: scale3d(1.15, 0.85, 1);
+             transform: scale3d(1.15, 0.85, 1);
+   }
+   65% {
+     -webkit-transform: scale3d(0.95, 1.05, 1);
+             transform: scale3d(0.95, 1.05, 1);
+   }
+   75% {
+     -webkit-transform: scale3d(1.05, 0.95, 1);
+             transform: scale3d(1.05, 0.95, 1);
+   }
+   100% {
+     -webkit-transform: scale3d(1, 1, 1);
+             transform: scale3d(1, 1, 1);
+   }
+ }
+
+/*
+ * Styles for the deck of cards
+ */
+
+.deck {
+  max-width: 660px;
+  min-height: 680px;
+  background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+  padding: 32px;
+  border-radius: 10px;
+  box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 3em;
+}
+
+.deck .card {
+  height: 125px;
+  width: 125px;
+  background: #2e3d49;
+  font-size: 0;
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+}
+
+.deck .card.open {
+  background: #02b3e4;
+  cursor: default;
+  -webkit-animation: flip-vertical-right 0.4s both;
+  animation: flip-vertical-right 0.4s both;
+}
+
+.deck .card.show {
+  font-size: 33px;
+}
+
+.deck .card.match {
+  cursor: default;
+  background: #02ccba;
+  font-size: 33px;
+  -webkit-animation: jello-horizontal 0.8s;
+  animation: jello-horizontal 0.8s;
+}
+
+.deck .card.not-match {
+  cursor: default;
+  background: #e38131;
+  -webkit-animation: shake-horizontal 0.5s;
+  animation: shake-horizontal 0.5s;
+}
+
+.flip-card {
+  -webkit-animation: flip-vertical-right 0.4s both;
+  animation: flip-vertical-right 0.4s both;
+}
+
+.deck li i {
+  transform: scaleX(-1);
+}
+
+.deck .card.match i,
+.deck .card.not-match i {
+  transform: scaleX(1);
+}
+
+/*
+ * Styles for the Score Panel
+ */
+
+.score-panel {
+  text-align: left;
+  width: 345px;
+  margin-bottom: 10px;
+}
+
+.score-panel .stars {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  margin: 0 5px 0 0;
+}
+
+.score-panel .stars li {
+  list-style: none;
+  display: inline-block;
+}
+
+.score-panel .restart {
+  float: right;
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+.score-panel .timer {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+/*
+ * Modal
+ */
+
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff url('../img/geometry2.png');
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+  padding: 1rem 1.5rem;
+  width: 22rem;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.again-button, .close-button {
+  width: 6rem;
+  line-height: 3rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  background-color: #2e3d49;
+  color: white;
+}
+
+.close-button:hover, .again-button:hover {
+  background-color: #02b3e4;
+}
+
+.show-modal {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1.0);
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.score-finish .stars {
+  padding: 10px;
+  display: inline-block;
+  margin: 0;
+}
+
+.score-finish .stars li {
+  list-style: none;
+  display: inline-block;
+}
+
+.time-moves, .star-rating, .modal-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+/*
+ * Breakpoints
+ */
+
+@media screen and (max-width: 570px) {
+  .deck {
+    min-height: 100%;
+  }
+  .deck .card {
+    height: 105px;
+    width: 105px;
+    margin: 10px 0;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .deck .card {
+    height: 85px;
+    width: 85px;
+  }
+  .score-panel {
+    font-size: 1.3em;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  .deck .card {
+    height: 75px;
+    width: 75px;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .deck .card {
+    height: 65px;
+    width: 65px;
+  }
+  .score-panel {
+    font-size: 1.4em;
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 330px) {
+  .deck .card {
+    height: 55px;
+    width: 55px;
+  }
+}
